@@ -4,17 +4,17 @@ import { redirect } from "next/navigation";
 
 const RecepieListing = (args) => { 
 
+    console.log(args.width);
     const {id,image,name,difficulty,prepTimeMinutes,servings,cuisine,tags,caloriesPerServing} = args.recipie;    
 
-    let handleClick=(id)=>{
-        redirect(`/${id}`)
-      
+    let handleClick=()=>{
+        args.width==="w-72" ? redirect(`/${id}`) : "" //redirect if on first page
     }
  
 
   return(
-    <div className="container border rounded-md shadow-md  m-4 max-w-72" onClick={()=>handleClick(id)}>
-        <Image src={image} width={150} height={200} alt={name} className="rounded-md w-72"></Image>
+    <div className={`container border rounded-md shadow-md  m-4 ${args.width}  place-items-center`} onClick={handleClick}>
+        <Image src={image} width={150} height={200} alt={name} className="rounded-md w-full sm:w-72"></Image>
         <p className="text-pretty text-stone-950 p-2 text-center">{name}</p>
         <div className="flex flex-wrap place-content-center">
             <div className="m-2 p-2 border-2 place-items-center shadow-sm rounded-md ">
@@ -51,13 +51,14 @@ const RecepieListing = (args) => {
              {cuisine}
         </p>
            
-        <p className="p-1 w-auto">
+        <p className="p-1 w-auto pb-4">
             Tags: 
             {
                 tags.map((tag , index)=>{
                     return (
                         <span className="m-2" key={index}>
-                            {tag} |
+
+                             {tag}{index < tags.length - 1 && ' |'}
                         </span>
                     );
                 })    

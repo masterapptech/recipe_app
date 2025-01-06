@@ -17,7 +17,7 @@ const Home = () => {
     
   {
     recepies.map((recipie,index)=>{
-      return <RecepieListing key={recipie.id} recipie={recipie} ></RecepieListing>
+      return <RecepieListing key={recipie.id} recipie={recipie}  width="w-72"></RecepieListing>
     })
       
   }
