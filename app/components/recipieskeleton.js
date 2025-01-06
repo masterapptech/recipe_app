@@ -1,5 +1,5 @@
 const RecipieLoading = () => {
-    return (  <div className="container border rounded-md shadow-md m-4 max-w-72 animate-pulse">
+    return (  <div className="container border rounded-md shadow-md m-4 max-w-full place-items-center animate-pulse">
         {/* Image Placeholder */}
         <div className="bg-gray-300 rounded-md w-72 h-48"></div>
   

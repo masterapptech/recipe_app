@@ -1,15 +1,24 @@
+"use client"
 import { AiVideoIcon, AutomotiveBattery01Icon, Dish02Icon, EnergyEllipseIcon, Timer02Icon } from "hugeicons-react";
 import Image from "next/image"; 
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 const RecepieListing = (args) => { 
-
-    console.log(args.width);
+ 
     const {id,image,name,difficulty,prepTimeMinutes,servings,cuisine,tags,caloriesPerServing} = args.recipie;    
+    
+    let  route=useRouter()
 
+    
     let handleClick=()=>{
-        args.width==="w-72" ? redirect(`/${id}`) : "" //redirect if on first page
-    }
+        /*
+        redirect() : window.location.replace()
+        router.push() : window.location.href
+         */
+        //    args.width==="w-72" ? redirect(`/${id}`) : "" //redirect if on first page
+    args.width==="w-72" ? route.push(`/${id}`) : "" //redirect if on first page
+    
+}
  
 
   return(
